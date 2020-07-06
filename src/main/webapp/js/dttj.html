@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加/删除行</title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            var i = 1;
+            $("button").click(function () {
+                $("tr:last").after("<tr><td>李四" + i + "</td><td>2" + i
+                    + "</td><td><a href=\"#\">删除</a></td></tr>");
+                i++;
+            });
+
+            // 动态添加的节点是没有绑定事件的,所以这种写法是错误的
+            // $("a").click(function () {
+            //     $(this).parent().parent().remove();
+            // });
+
+            // 动态添加的节点，需要使用document.on进行事件绑定
+            $(document).on("click", "a", function () {
+                $(this).parent().parent().remove();
+            });
+        });
+
+        var a = {id:1,name:"abc",age:"23"};
+    </script>
+</head>
+<body>
+<button>添加一行</button>
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>删除</th>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>23</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+</table>
+</body>
+</html>

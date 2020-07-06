@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#tijiao").click(function () {
+                // 取得姓名-文本框
+                var uName;
+                uName = $("#uName").val();// 通过id选择
+                // uName = $("[name='uName']").val();// 通过name属性选择
+                // uName = $("input:first").val();// 通过:first选择第一个input元素
+                // uName = $(":text").val();// 通过:text选择type属性为text的input元素
+
+                alert(uName);
+
+                // 取得籍贯-下拉列表
+                var jiguan;
+                jiguan = $("#jiguan").val();// 通过id选择元素
+                // jiguan = $("[name='jiguan']").val();// 通过name属性选择元素
+                // jiguan = $("select").val();// 通过标签选择元素
+
+                alert(jiguan);
+
+                // 取得性别-单选框
+                var sex;
+                sex = $("input[name='sex']:checked").val();// 通过name属性选择被选中的元素
+
+                alert(sex);
+
+                // 取得爱好-多选框
+                var aihaos = [];
+                var aihao;
+                aihao = $("input[name='aihao']:checked");// 通过name属性选择被选中的元素
+                aihao.each(function () {
+                    aihaos.push($(this).val());
+                });
+                alert(aihaos);
+            });
+            
+            $("#shezhi").click(function () {
+                // alert($("input[name='sex']"));
+                // 设置姓名-文本框
+                $("#uName").val("aaa");
+
+                // 设置籍贯-下拉列表
+                $("#jiguan").val("3");
+
+                // 设置性别-单选框
+                // $("input[name='sex']").prop("checked" , false);
+                $("input[name='sex'][value='2']").prop("checked", true);
+
+                // 设置爱好-多选框
+                var szah = $("#szah").val().split(',');
+                // 清除已选中的爱好
+                $("input[name='aihao']").prop('checked', false);
+
+                for(var i = 0;i < szah.length; i++){
+                    $("input[name='aihao'][value='" + szah[i] + "']").prop('checked', true);
+                }
+                // for循环的另一种写法
+                // $.each(szah,function (index,item) {// index等于i，item等于szah[i]
+                //     $("input[name='aihao'][value='" + item + "']").prop('checked', true);
+                // });
+            });
+        });
+
+    </script>
+</head>
+<body>
+姓名：<input type="text" id="uName" name="uName" value="123"><br>
+籍贯：<select name="jiguan" id="jiguan">
+    <option value="">--请选择--</option>
+    <option value="1">北京</option>
+    <option value="2">河北</option>
+    <option value="3">河南</option>
+    <option value="4">山西</option>
+    <option value="5">山东</option>
+</select><br>
+性别：
+<input type="radio" name="sex" value="0" checked>男
+<input type="radio" name="sex" value="1">女
+<input type="radio" name="sex" value="2">aaa<br>
+爱好：
+<input type="text" id="szah"/>
+<input type="checkbox" name="aihao" value="1">音乐
+<input type="checkbox" name="aihao" value="2">篮球
+<input type="checkbox" name="aihao" value="3">足球
+<input type="checkbox" name="aihao" value="4">旅游
+<input type="checkbox" name="aihao" value="5">摄影<br>
+<button id="tijiao">提交</button>
+<button id="shezhi">设置</button>
+</body>
+</html>

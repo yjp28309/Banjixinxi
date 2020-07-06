@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#tijiao").click(function () {
+                // 验证姓名
+                // var uName = $("#uName");
+                // uName.val(uName.val().trim());
+                // if(uName.val() == ""){
+                //     alert("请输入姓名");
+                //     // 将焦点置入姓名本框
+                //     uName.select();
+                //     return false;
+                // }
+
+                // 验证年龄
+                // var uAge = $("#uAge");
+                // uAge.val(uAge.val().trim());
+                // if(uAge.val() == ""){
+                //     alert("请输入年龄");
+                //     // 将焦点置入年龄本框
+                //     uAge.select();
+                //     return false;
+                // } else{
+                //     var reg = /^[0-9]{1,2}$/;
+                //     if(!reg.test(uAge.val())){
+                //         alert("请输入正确的年龄");
+                //         uAge.select();
+                //         return false;
+                //     }
+                // }
+
+                // 验证手机
+                // var uPhone = $("#uPhone");
+                // uPhone.val(uPhone.val().trim());
+                // if(uPhone.val() == ""){
+                //     alert("请输入手机号");
+                //     // 将焦点置入手机本框
+                //     uPhone.select();
+                //     return false;
+                // } else{
+                //     var reg = /^1[3|4|5|8][0-9]\d{8}$/;
+                //     if(!reg.test(uPhone.val())) {
+                //         alert("请输入正确的手机号");
+                //         // 将焦点置入手机本框
+                //         uPhone.select();
+                //         return false;
+                //     }
+                // }
+
+                // 验证籍贯
+                // var jiguan = $("#jiguan");
+                // if(jiguan.val() == ""){
+                //     alert("请选择籍贯");
+                //     // 将焦点置入手机本框
+                //     jiguan.select();
+                //     return false;
+                // }
+
+                // 验证性别
+                // var sex = $("input[name='sex']:checked");
+                // if(sex.val() == "2"){
+                //     alert("请选择正确的性别");
+                //     // 将焦点置入手机本框
+                //     // sex.select();
+                //     return false;
+                // }
+
+                // 验证爱好
+                var aihaos = [];
+                var aihao;
+                aihao = $("input[name='aihao']:checked");// 通过name属性选择被选中的元素
+                aihao.each(function () {
+                    aihaos.push($(this).val());
+                });
+
+                if (aihaos.length <= 0) {
+                    alert("请选择爱好");
+                    return false;
+                }
+
+                alert("验证通过");
+            });
+        });
+    </script>
+</head>
+<body>
+姓名：<input type="text" id="uName" name="uName"><br>
+年龄：<input type="number" maxlength="3" minlength="1" id="uAge" name="uAge"><br>
+手机号：<input type="text" id="uPhone" name="uPhone"><br>
+籍贯：<select name="jiguan" id="jiguan">
+    <option value="">--请选择--</option>
+    <option value="1">北京</option>
+    <option value="2">河北</option>
+    <option value="3">河南</option>
+    <option value="4">山西</option>
+    <option value="5">山东</option>
+</select><br>
+性别：
+<input type="radio" name="sex" value="0" checked>男
+<input type="radio" name="sex" value="1">女
+<input type="radio" name="sex" value="2">aaa<br>
+爱好：
+<input type="checkbox" name="aihao" value="1">音乐
+<input type="checkbox" name="aihao" value="2">篮球
+<input type="checkbox" name="aihao" value="3">足球
+<input type="checkbox" name="aihao" value="4">旅游
+<input type="checkbox" name="aihao" value="5">摄影<br>
+<button id="tijiao">提交</button>
+<button id="shezhi">设置</button>
+</body>
+</html>

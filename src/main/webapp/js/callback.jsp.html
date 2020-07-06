@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                // 这种方式不能实现隐藏完成才现实信息的效果
+                // $("p").hide(5000);
+                // alert("隐藏完成");
+
+                // 此时需要使用callback函数
+                $("p").hide(5000, function () {
+                    alert("隐藏完成");
+                });
+            });
+        });
+    </script>
+</head>
+<p>aaa</p>
+<p>bbb</p>
+<p>ccc</p>
+<input type="button" id="btn" value="隐藏">
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#tijiao").click(function () {
+                var name=$("#name").val();
+                alert(name)
+                var banji=$("#banji").val();
+                alert(banji)
+                var sex=$("input[name='sex']").val();
+                alert(sex)
+                var box=$("input[name='box']:checked");
+                var boxs=[];
+                box.each(function () {
+                    boxs.push($(this).val());
+                });
+                alert(boxs)
+            })
+
+            $("#shezhi").click(function () {
+                $("#name").val("aaaa");
+                $("#banji").val("2");
+                $("input[name='sex'][value='2']").prop("checked",true);
+                var kuang=$("#kuang").val().split(',');
+                $("input[name='box']").prop("checked",false);
+                for(var i =0;i<kuang.length;i++){
+                    $("input[name='box'][value='"+kuang[i]+"']").prop("checked",true);
+                }
+
+            })
+        })
+
+    </script>
+
+<!--    jquery设置属性attr和prop的区别:具有 true 和 false 两个属性的属性，-->
+<!--    如 checked, selected 或者 disabled 使用prop()，其他的使用 attr()-->
+
+</head>
+<body>
+    姓名：<input type="text" id="name" name="name" value="456"><br>
+    班级：<select id="banji">
+        <option value="1">--请选择--</option>
+        <option value="2">444</option>
+        <option value="3">333</option>
+        <option value="4">555</option>
+    </select><br>
+    性别：
+        <input type="radio" name="sex" value="1" checked>男
+        <input type="radio" name="sex" value="2">女
+        <input type="radio" name="sex" value="3">12<br>
+    爱好：
+        <input type="text" id="kuang">
+        <input type="checkbox" name="box" value="1">篮球
+        <input type="checkbox" name="box" value="2">足球
+        <input type="checkbox" name="box" value="3">1球
+        <input type="checkbox" name="box" value="4">2球<br>
+    <input type="button" id="tijiao" value="提交">
+    <input type="button" id="shezhi" value="设置">
+</body>
+</html>
